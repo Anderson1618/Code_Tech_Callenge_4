@@ -7,12 +7,11 @@ import datetime
 from prophet import Prophet
 
 st.set_page_config(layout='wide')
-st.title('O Preço do Petróleo 🛢️📈 ')
-st.header('Análise da influência geopolítica e demanda global')
+st.title('Segredos por trás do preço do petróleo 🛢')
+st.header('Como funciona a cotação do petróleo?')
 
 st.write('O preço é influenciado por uma série de fatores complexos e inter-relacionados. Em primeiro lugar, a :red[oferta] e :red[demanda] desempenham um papel crucial. Eventos que afetam a produção, como decisões da [Organização dos Países Exportadores de Petróleo (OPEP)](https://pt.wikipedia.org/wiki/Organiza%C3%A7%C3%A3o_dos_Pa%C3%ADses_Exportadores_de_Petr%C3%B3leo) ou interrupções nas operações de grandes produtores, podem impactar significativamente a oferta global. Por outro lado, a demanda por petróleo está intimamente ligada às condições econômicas globais, com flutuações na atividade industrial e no consumo de energia tendo um impacto direto.')
 st.write('Além disso, fatores geopolíticos podem desempenhar um papel significativo na volatilidade dos preços do petróleo. Tensões em regiões-chave de produção, eventos políticos e instabilidades em grandes países exportadores podem gerar incerteza nos mercados e influenciar os preços. Além disso, considerações ambientais, avanços tecnológicos em energias renováveis e políticas governamentais relacionadas à transição para fontes de energia mais limpas também podem afetar as perspectivas de longo prazo do mercado de petróleo, impactando os preços de forma mais sustentada.')
-
 st.divider()
 
 url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper=view'
@@ -29,15 +28,11 @@ with col1:
     st.dataframe(df)
 
 with col2:
-    max_price_row = df.loc[df['preco'].idxmax()]
-    st.subheader("Valor Máximo do Preço e Ano Correspondente:")
-    st.write(f"Data: {max_price_row['data'].strftime('%d/%m/%Y')}, Preço Máximo: {max_price_row['preco']}")
 
-    st.divider()
-
-    min_price_row = df.loc[df['preco'].idxmin()]
-    st.subheader("Valor Mínimo do Preço e Ano Correspondente:")
-    st.write(f"Data: {min_price_row['data'].strftime('%d/%m/%Y')}, Preço Mínimo: {min_price_row['preco']}")
+st.title('Exemplo de Adição de Vídeo no Streamlit')
+st.write("Aqui está um exemplo de como adicionar um vídeo ao seu aplicativo Streamlit.")
+st.subheader("Vídeo do YouTube")
+st.video(https://www.youtube.com/watch?v=IK6PAP7Sj7s)
 
 st.divider()
 
