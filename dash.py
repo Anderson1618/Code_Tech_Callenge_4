@@ -120,14 +120,14 @@ with col2:
     st.write(' ')
     st.write(' ')
     st.write(' ')
-    st.write('Com a redução da demanda asiática, os preços globais do petróleo caíram. No auge da crise, os preços do petróleo Brent caíram de cerca de $20 por barril em 1997 para menos de $10 por barril no final de 1998')
+    st.write('Com a redução da demanda asiática, os preços globais do petróleo caíram. No auge da crise, os preços do petróleo Brent caíram de cerca de 20 dlares por barril em 1997 para menos de 10 dólares por barril no final de 1998')
     st.write('')
 
-
+st.header('Anos 2000')
 col1, col2 = st.columns([2, 1])
 with col1: 
     df_setembro_2001 = df[(df['data'] >= '2001-09-01') & (df['data'] <= '2001-09-30')]
-    fig_setembro_2001 = px.line(df_setembro_2001, x='data', y='preco', title='Variação do Preço do Petróleo em Setembro de 2001 📉',
+    fig_setembro_2001 = px.line(df_setembro_2001, x='data', y='preco', title='Variação do Preço do Petróleo em Setembro de 2001',
                             labels={'preco': 'Preço do Petróleo (USD)', 'data': 'Data'})
     fig_setembro_2001.add_trace(go.Scatter(x=df_setembro_2001['data'], y=df_setembro_2001['preco'], showlegend=False))
     st.plotly_chart(fig_setembro_2001, use_container_width=True)
@@ -138,9 +138,45 @@ with col2:
     st.write(' ')
     st.write(' ')
     st.write(' ')
-    st.write('Em 11 setembro de 2001, o mundo assistia aos ataques contra o World Trade Center')
-    st.write('No dia dos ataques, o barril Brent era cotado a 29,12 dólares, diminuindo a US$ 25,57 dólares uma semana depois. No final do mês de setembro registra uma queda de cerca de 25%.')
+    st.write(Em 11 setembro de 2001 em pleno ataque terrorista aos Estados Unidos o barril Brent era cotado a 29.12 dólares, diminuindo a 25.57 dólares uma semana depois. No final do mês de setembro registra uma queda de cerca de 25%.')
 
+col1, col2 = st.columns([2, 1])
+with col1: 
+    df_asia = df[(df['data'] >= '2008-01-01') & (df['data'] <= '2008-12-31')]
+    fig_asia = px.line(df_asia, x='data', y='preco', title='Variação do Preço do Petróleo no conflito Rússia-Ucrânia 📉',
+                            labels={'preco': 'Preço do Petróleo (USD)', 'data': 'Data'})
+    fig_asia.add_trace(go.Scatter(x=df_asia['data'], y=df_asia['preco'], showlegend=False))
+    st.plotly_chart(fig_asia, use_container_width=True)
+
+with col2:
+    st.write(' ')
+    st.write(' ')
+    st.write(' ')
+    st.write(' ')
+    st.write(' ')
+    st.write(' ')
+    st.write('Em 2008, os preços do petróleo atingiram um pico histórico, chegando a cerca de 147 dólares por barril, refletindo a forte demanda global impulsionada principalmente pelo crescimento da China e da Índia.')
+    
+st.header('Anos 2010')
+col1, col2 = st.columns([2, 1])
+with col1: 
+    df_russia_ucrania = df[(df['data'] >= '2022-02-24') & (df['data'] <= '2022-03-03')]
+    fig_russia_ucrania = px.line(df_russia_ucrania, x='data', y='preco', title='Variação do Preço do Petróleo no conflito Rússia-Ucrânia 📉',
+                            labels={'preco': 'Preço do Petróleo (USD)', 'data': 'Data'})
+    fig_russia_ucrania.add_trace(go.Scatter(x=df_russia_ucrania['data'], y=df_russia_ucrania['preco'], showlegend=False))
+    st.plotly_chart(fig_russia_ucrania, use_container_width=True)
+
+with col2:
+    st.write(' ')
+    st.write(' ')
+    st.write(' ')
+    st.write(' ')
+    st.write(' ')
+    st.write(' ')
+    st.write('No conflito com a Ucrânia, o crescimento do dia 24 de fevereiro a 3 de março de 2022 foi de 19,21%, com barris cotados em US$ 118,11.')
+    st.write('Após cerca de 3 meses, os preços caíram. Isso porque, segundo Bassotto, as cadeias produtivas se realocam, e, quem antes comprava da Rússia, migrou para outro mercado ou conseguiu comprar mais barato do país, como Índia e China fizeram.')
+
+st.header('Anos 2020')
 col1, col2 = st.columns([2, 1])
 with col1: 
     df_russia_ucrania = df[(df['data'] >= '2022-02-24') & (df['data'] <= '2022-03-03')]
@@ -157,8 +193,9 @@ with col2:
     st.write(' ')
     st.write(' ')
     st.write('Com guerra envolvendo a Rússia foi um pouco diferente, quando a cotação do barril Brent, referência internacional, subiu rapidamente.')
-    st.write('No conflito com a Ucrânia, o crescimento do dia 24 de fevereiro a 3 de março de 2022 foi de 19,21%, com barris cotados em US$ 118,11.')
+    st.write('No conflito com a Ucrânia, o crescimento do dia 24 de fevereiro a 3 de março de 2022 foi de 19.21%, com barris cotados em US$ 118,11.')
     st.write('Após cerca de 3 meses, os preços caíram. Isso porque, segundo Bassotto, as cadeias produtivas se realocam, e, quem antes comprava da Rússia, migrou para outro mercado ou conseguiu comprar mais barato do país, como Índia e China fizeram.')
+
 
 st.divider()
 
