@@ -7,11 +7,11 @@ import datetime
 from prophet import Prophet
 
 st.set_page_config(layout='wide')
-st.title('Segredos por trás do preço do petróleo 🛢')
+st.title('Os segredos por trás do preço do petróleo 🛢')
 st.header('Como funciona a cotação do petróleo?')
 
-st.write('O preço é influenciado por uma série de fatores complexos e inter-relacionados. Em primeiro lugar, a :red[oferta] e :red[demanda] desempenham um papel crucial. Eventos que afetam a produção, como decisões da [Organização dos Países Exportadores de Petróleo (OPEP)](https://pt.wikipedia.org/wiki/Organiza%C3%A7%C3%A3o_dos_Pa%C3%ADses_Exportadores_de_Petr%C3%B3leo) ou interrupções nas operações de grandes produtores, podem impactar significativamente a oferta global. Por outro lado, a demanda por petróleo está intimamente ligada às condições econômicas globais, com flutuações na atividade industrial e no consumo de energia tendo um impacto direto.')
-st.write('Além disso, fatores geopolíticos podem desempenhar um papel significativo na volatilidade dos preços do petróleo. Tensões em regiões-chave de produção, eventos políticos e instabilidades em grandes países exportadores podem gerar incerteza nos mercados e influenciar os preços. Além disso, considerações ambientais, avanços tecnológicos em energias renováveis e políticas governamentais relacionadas à transição para fontes de energia mais limpas também podem afetar as perspectivas de longo prazo do mercado de petróleo, impactando os preços de forma mais sustentada.')
+st.write('A cotação do petróleo é definida por seu preço, em um determinado momento no mercado onde está sendo negociado. Desse modo, a cotação do petróleo é o resultado da oferta e demanda da commodity no mercado internacional. Nesse caso, a unidade de medida utilizada é de dólares por barril de petróleo.Dessa forma, o preço do barril de petróleo nada mais é do que o valor combinado por aqueles que desejam vender, por aqueles que desejam comprar. Ou seja, é o preço de equilíbrio que satisfaz a oferta e demanda do mercado.Importante ressaltar que, de forma geral, ao negociar barris de petróleo, usa-se a cotação do preço no final do pregão de mercado, informando qual foi a cotação do dia aos investidores.')
+st.write('Adicionalmente, aspectos geopolíticos podem exercer uma função de destaque na flutuação dos valores do petróleo. Conflitos em zonas-chave de produção, incidentes políticos e turbulências em nações exportadoras proeminentes podem instigar incertezas nos mercados e influenciar os custos. Mais ainda, considerações ecológicas, avanços tecnológicos em fontes de energia renovável e políticas governamentais ligadas à mudança para fontes energéticas mais ecologicamente viáveis também têm o potencial de afetar as perspectivas de longo prazo do mercado petrolífero, exercendo um impacto mais prolongado nos valores.')
 st.divider()
 
 url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper=view'
@@ -29,7 +29,7 @@ with col1:
 
 with col2:
 
-     st.subheader("Evolução dos países com maiores reservas de pretóleo do mundo")
+     st.subheader("Evolução dos países com maiores reservas de pretóleo do mundo (1990 a 2023)")
      st.video("https://www.youtube.com/watch?v=IK6PAP7Sj7s")
 
 st.divider()
