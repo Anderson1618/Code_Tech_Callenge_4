@@ -1,6 +1,10 @@
 import streamlit as st
 import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+import pandas as pd
 import datetime
+from prophet import Prophet
 
 st.set_page_config(layout='wide')
 st.title('O Preço do Petróleo 🛢️📈 ')
