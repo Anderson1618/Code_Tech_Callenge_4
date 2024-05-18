@@ -40,7 +40,6 @@ fig_mean_by_year = px.line(df_mean_by_year, x=df_mean_by_year.index, y=df_mean_b
                                     labels={'value': 'Média do Preço do Petróleo (USD)', 
                                     'index': 'Ano'})
 
-# Adicionando marcadores nos anos de 2008 e 2022
 fig_mean_by_year.add_vline(x=2008, line_dash="dash", line_color="green", annotation_text="2008", annotation_position="top left")
 fig_mean_by_year.add_vline(x=2022, line_dash="dash", line_color="green", annotation_text="2022", annotation_position="top left")
 
@@ -73,6 +72,7 @@ st.divider()
 st.subheader("Análise temporal do preço - 1987 até 2024")  
 st.write('O gráfico interativo permite uma análise detalhada da variação diária ao longo dos anos. é interessante para entendermos como o preço do petróleo flutuou em um determinado período extratificando insights reçevantes para tomadas de decisão.')
 st.write('Ao selecionar um ano de interesse, podem visualizar como o mercado reagiu a eventos geopolíticos, mudanças na oferta e demanda, ou outros fatores econômicos.')
+
 
 selected_year = st.selectbox("Ano:", df['data'].dt.year.unique())
 df_selected_year = df[df['data'].dt.year == selected_year]
