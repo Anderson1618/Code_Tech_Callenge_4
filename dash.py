@@ -107,7 +107,7 @@ with col2:
 
 col1, col2 = st.columns([2, 1])
 with col1:
-    df_crise_asia = df[(df['data'] >= '1997-07-01') & (df['data'] <= '1998-12-31')]
+    df_crise_asia = df[(df['data'] >= '1997-01-01') & (df['data'] <= '1999-01-01')]
     fig = px.line( df_crise_asia, x='data', y='preco', title='Variação do Preço do Petróleo durante a crise financeira na ásia (1997-1998)',
               labels={'preco': 'Preço do Petróleo (USD)', 'data': 'Data'})
     fig.add_trace(go.Scatter(x=df_guerra_golfo['data'], y=df_guerra_golfo['preco'], showlegend=False))
@@ -162,26 +162,6 @@ with col2:
 
 st.divider()
 
-st.subheader("Mas afinal, como uma conflito geopolítico influencia no valor do petróleo?")  
-
-st.write("Antes de tudo, vale lembrar que as guerras são diferentes e ocorrem em cenários econômicos distintos.")
-st.write("No entanto, de maneira geral, a instabilidade geopolítica em regiões produtoras de petróleo pode afetar o fornecimento global. Conflitos podem resultar em interrupções na produção, transporte e exportação de petróleo, gerando incertezas no mercado. Essa incerteza muitas vezes leva a aumentos nos preços do petróleo, pois os investidores buscam proteção diante dos riscos associados à oferta.")
-st.write(' ')
-st.write('Para auxiliar em previsões futuras, vamos destacar os 10 principais países exportadores de petróleo por região e por país')
-
-dados = {
-    "Região/Organização": ["OPEP", "América do Norte", "CEI", "Resto do Mundo", "Total"],
-    "Produção de Petróleo em 2021 (barris por dia)": [31.7e6, 23.9e6, 13.8e6, 20.5e6, 89.9e6],
-    "% do Total": [35, 27, 15, 23, 100]
-}
-
-df_producao_petroleo = pd.DataFrame(dados)
-fig = px.bar(df_producao_petroleo, x="Região/Organização", y="Produção de Petróleo em 2021 (barris por dia)",
-             color="% do Total", title="Produção de Petróleo por Região/Organização em 2021",
-             labels={"Produção de Petróleo em 2021 (barris por dia)": "Produção de Petróleo (barris por dia)", "% do Total": "Percentual do Total"})
-st.plotly_chart(fig, use_container_width=True)
-
-st.divider()
 st.subheader("10 países mais exportadores de petróleo do mundo")  
 
 st.caption("O próximo gráfico mostra a produção de petróleo diária de alguns dos maiores produtores em 2021. "
