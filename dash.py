@@ -55,17 +55,6 @@ with col1:
     st.write('Por causa da crise financeira e da recessão que freou a demanda por petróleo, o barril desabou até os US$ 33,36 em 24 de dezembro.')
     st.write(' ')
     subcol1, subcol2 = st.columns(2)
-    with subcol1:
-        df_2008 = df[df['data'].dt.year == 2008]
-        max_price_2008 = df_2008.loc[df_2008['preco'].idxmax()]
-        st.write("Valor Máximo em 2008")
-        st.caption(f"Data: {max_price_2008['data'].strftime('%d/%m/%Y')}") 
-        st.caption(f"Preço Máximo: {max_price_2008['preco']}")
-    with subcol2:
-        min_price_2008 = df_2008.loc[df_2008['preco'].idxmin()]
-        st.write("Valor Mínimo em 2008:")
-        st.caption(f"Data: {min_price_2008['data'].strftime('%d/%m/%Y')}")
-        st.caption(f"Preço Mínimo: {min_price_2008['preco']}")
     
 
 with col3:
@@ -77,17 +66,6 @@ with col3:
     st.caption(' \n')
     st.write(' ')
     subcol1, subcol2 = st.columns(2)
-    with subcol1:
-        df_2022 = df[df['data'].dt.year == 2016]
-        max_price_2022 = df_2022.loc[df_2022['preco'].idxmax()]
-        st.write("Valor Máximo em 2022")
-        st.caption(f"Data: {max_price_2022['data'].strftime('%d/%m/%Y')}") 
-        st.caption(f"Preço Máximo: {max_price_2022['preco']}")
-    with subcol2:
-        min_price_2022 = df_2022.loc[df_2022['preco'].idxmin()]
-        st.write("Valor Mínimo em 2016")
-        st.caption(f"Data: {min_price_2022['data'].strftime('%d/%m/%Y')}")
-        st.caption(f"Preço Mínimo: {min_price_2022['preco']}")
 
 st.divider()
 
