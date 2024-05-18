@@ -1,6 +1,4 @@
-source /home/adminuser/venv/bin/activate
-pip install plotly prophet streamlit pandas
-pip list
+
 
 import streamlit as st
 import pandas as pd
