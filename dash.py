@@ -76,8 +76,9 @@ st.write('Ao selecionar um ano de interesse, podem visualizar como o mercado rea
 
 selected_year = st.selectbox("Ano:", df['data'].dt.year.unique())
 df_selected_year = df[df['data'].dt.year == selected_year]
-dia_maior_alta = df_selected_year.loc[df_selected_year['preco'].idxmax()]['data']
-dia_maior_baixa = df_selected_year.loc[df_selected_year['preco'].idxmin()]['data']
+dia_maior_alta = df_selected_year.loc[df_selected_year['preco'].idxmax()]['data'].strftime('%Y-%m-%d')
+dia_maior_baixa = df_selected_year.loc[df_selected_year['preco'].idxmin()]['data'].strftime('%Y-%m-%d')
+
 
 fig = px.line(df_selected_year, x='data', y='preco', title=f"Preço do Petróleo em {selected_year}",
               labels={'Preco': 'Preço do Petróleo (USD)', 'data': 'data'})
