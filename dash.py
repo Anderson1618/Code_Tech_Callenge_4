@@ -39,6 +39,12 @@ df_mean_by_year = df.groupby(df['data'].dt.year).mean(numeric_only=False)
 fig_mean_by_year = px.line(df_mean_by_year, x=df_mean_by_year.index, y=df_mean_by_year.columns[1:],
                                     labels={'value': 'Média do Preço do Petróleo (USD)', 
                                     'index': 'Ano'})
+fig_mean_by_year.add_shape(
+    dict(type="line", x0="2008-01-01", y0=0, x1="2008-01-01", y1=120, line=dict(color="black", width=1))
+)
+fig_mean_by_year.add_shape(
+    dict(type="line", x0="2022-01-01", y0=0, x1="2022-01-01", y1=120, line=dict(color="black", width=1))
+)
 st.plotly_chart(fig_mean_by_year, use_container_width=True)
 st.caption('A linha representa a média anual do preço do barril de petróleo ao longo do tempo. Variações notáveis podem ser resultado de eventos geopolíticos, flutuações na oferta e demanda, ou fatores econômicos globais.')
 
