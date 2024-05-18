@@ -29,8 +29,8 @@ with col1:
 
 with col2:
 
-st.subheader("Vídeo do YouTube")
-st.video(https://www.youtube.com/watch?v=IK6PAP7Sj7s)
+     st.subheader("Vídeo do YouTube")
+     st.video(https://www.youtube.com/watch?v=IK6PAP7Sj7s)
 
 st.divider()
 
