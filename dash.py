@@ -76,31 +76,21 @@ st.write('Ao selecionar um ano de interesse, podem visualizar como o mercado rea
 
 selected_year = st.selectbox("Ano:", df['data'].dt.year.unique())
 df_selected_year = df[df['data'].dt.year == selected_year]
-dia_maior_alta = df_selected_year.loc[df_selected_year['preco'].idxmax()]['data'].strftime('%Y-%m-%d')
-dia_maior_baixa = df_selected_year.loc[df_selected_year['preco'].idxmin()]['data'].strftime('%Y-%m-%d')
-
-
 fig = px.line(df_selected_year, x='data', y='preco', title=f"Preço do Petróleo em {selected_year}",
               labels={'Preco': 'Preço do Petróleo (USD)', 'data': 'data'})
 fig.update_xaxes(title_text='Data')
 fig.update_yaxes(title_text='Preço do Petróleo (USD)')
-
-fig.add_vline(x=dia_maior_alta, line_dash="dash", line_color="green", annotation_text="Maior Alta", annotation_position="top left")
-fig.add_vline(x=dia_maior_baixa, line_dash="dash", line_color="red", annotation_text="Maior Baixa", annotation_position="bottom right")
-
 st.plotly_chart(fig, use_container_width=True)
 
 st.divider()
 
-st.subheader("Eventos que afetam o preço do petróleo")  
-
-st.write('As guerras frequentemente exercem uma influência significativa nos preços do petróleo devido à sua capacidade de perturbar a estabilidade do fornecimento global de energia. Conflitos armados em regiões-chave produtoras de petróleo podem resultar em interrupções na produção e no transporte, levando a uma redução na oferta. Essa incerteza no fornecimento, combinada com a dependência global do petróleo como fonte primária de energia, pode resultar em aumentos súbitos e acentuados nos preços do petróleo durante períodos de conflito.')
-st.write('Além disso, a percepção de risco geopolítico pode levar os investidores a especularem sobre futuros aumentos nos preços do petróleo, exacerbando ainda mais a volatilidade do mercado. Portanto, as guerras têm o potencial de desempenhar um papel significativo na dinâmica dos preços do petróleo, impactando tanto a oferta quanto a demanda globais.')
+st.subheader("Principais eventos que afetaram o preço do petróleo")
+st.header('Anos 90')
 
 col1, col2 = st.columns([2, 1])
 with col1:
     df_guerra_golfo = df[(df['data'] >= '1990-08-01') & (df['data'] <= '1990-08-31')]
-    fig = px.line(df_guerra_golfo, x='data', y='preco', title='Variação do Preço do Petróleo durante a Guerra do Golfo 📈',
+    fig = px.line(df_guerra_golfo, x='data', y='preco', title='Variação do Preço do Petróleo durante a Guerra do Golfo',
               labels={'preco': 'Preço do Petróleo (USD)', 'data': 'Data'})
     fig.add_trace(go.Scatter(x=df_guerra_golfo['data'], y=df_guerra_golfo['preco'], showlegend=False))
     st.plotly_chart(fig, use_container_width=True)
@@ -112,8 +102,8 @@ with col2:
     st.write(' ')
     st.write(' ')
     st.write(' ')
-    st.write('Em 1990, o Iraque invade o Kuwait – que participou na Guerra Irã-Iraque. Mais uma vez, uma das mais importantes regiões petrolíferas levanta preocupações no abastecimento do ocidente.')
-    st.write('O preço do barril, que no início da Guerra do Golfo, em 2 de agosto de 1990, era cotado a US$ 22,25, teve um aumento de cerca de 25%.')
+    st.write('Em 1990, o Iraque invade o Kuwait – que participou na Guerra Irã-Iraque, com isso o preço do barril, que no início da Guerra do Golfo, era cotado a US$ 22.25, teve um aumento de cerca de 25%.')
+    st.write('')
 
 col1, col2 = st.columns([2, 1])
 with col1: 
