@@ -34,9 +34,9 @@ with col2:
 
 st.divider()
 
-st.subheader("Série histórica - Preço petróleo")  
+st.subheader("Série histórica - Preço petróleo")
 df_mean_by_year = df.groupby(df['data'].dt.year).mean(numeric_only=False)
-fig_mean_by_year = px.line(df_mean_by_year, x=df_mean_by_year.index, y=df_mean_by_year.columns[1:],color = "red"
+fig_mean_by_year = px.line(df_mean_by_year, x=df_mean_by_year.index, y=df_mean_by_year.columns[1:], color="red",
                                     labels={'value': 'Média do Preço do Petróleo (USD)', 
                                     'index': 'Ano'})
 
