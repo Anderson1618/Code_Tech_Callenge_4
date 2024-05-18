@@ -106,6 +106,25 @@ with col2:
     st.write('')
 
 col1, col2 = st.columns([2, 1])
+with col1:
+    df_crise_asia = df[(df['data'] >= '1997-07-01') & (df['data'] <= '1998-12-31')]
+    fig = px.line( df_crise_asia, x='data', y='preco', title='Variação do Preço do Petróleo durante a crise financeira na ásia (1997-1998)',
+              labels={'preco': 'Preço do Petróleo (USD)', 'data': 'Data'})
+    fig.add_trace(go.Scatter(x=df_guerra_golfo['data'], y=df_guerra_golfo['preco'], showlegend=False))
+    st.plotly_chart(fig, use_container_width=True)
+
+with col2:
+    st.write(' ')
+    st.write(' ')
+    st.write(' ')
+    st.write(' ')
+    st.write(' ')
+    st.write(' ')
+    st.write('Com a redução da demanda asiática, os preços globais do petróleo caíram. No auge da crise, os preços do petróleo Brent caíram de cerca de $20 por barril em 1997 para menos de $10 por barril no final de 1998')
+    st.write('')
+
+
+col1, col2 = st.columns([2, 1])
 with col1: 
     df_setembro_2001 = df[(df['data'] >= '2001-09-01') & (df['data'] <= '2001-09-30')]
     fig_setembro_2001 = px.line(df_setembro_2001, x='data', y='preco', title='Variação do Preço do Petróleo em Setembro de 2001 📉',
