@@ -36,9 +36,13 @@ st.divider()
 
 st.subheader("Série histórica - Preço petróleo")
 df_mean_by_year = df.groupby(df['data'].dt.year).mean(numeric_only=False)
-fig_mean_by_year = px.line(df_mean_by_year, x=df_mean_by_year.index, y=df_mean_by_year.columns[1:], color="red",
+fig_mean_by_year = px.line(df_mean_by_year, x=df_mean_by_year.index, y=df_mean_by_year.columns[1:],
                                     labels={'value': 'Média do Preço do Petróleo (USD)', 
                                     'index': 'Ano'})
+
+# Adicionando marcadores nos anos de 2008 e 2022
+fig_mean_by_year.add_vline(x=2008, line_dash="dash", line_color="green", annotation_text="2008", annotation_position="top left")
+fig_mean_by_year.add_vline(x=2022, line_dash="dash", line_color="green", annotation_text="2022", annotation_position="top left")
 
 st.plotly_chart(fig_mean_by_year, use_container_width=True)
 
