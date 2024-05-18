@@ -110,7 +110,7 @@ with col1:
     df_crise_asia = df[(df['data'] >= '1997-01-01') & (df['data'] <= '1999-01-01')]
     fig = px.line( df_crise_asia, x='data', y='preco', title='Variação do Preço do Petróleo durante a crise financeira na ásia (1997-1998)',
               labels={'preco': 'Preço do Petróleo (USD)', 'data': 'Data'})
-    fig.add_trace(go.Scatter(x=df_guerra_golfo['data'], y=df_guerra_golfo['preco'], showlegend=False))
+    fig.add_trace(go.Scatter(x=df_crise_asia['data'], y=df_crise_asia['preco'], showlegend=False))
     st.plotly_chart(fig, use_container_width=True)
 
 with col2:
@@ -222,30 +222,12 @@ st.markdown(conteudo_canada, unsafe_allow_html=True)
 
 st.divider()
 
-st.subheader("Fatores complexos e inter-relacionados")
-
-st.write(':red[**Eventos geopolíticos nos países que mais exportam petróleo é crucial**] porque esses eventos têm o potencial de impactar significativamente o mercado global de petróleo e, por consequência, o preço por barril. Aqui estão algumas razões pelas quais é importante acompanhar esses eventos:')
-
-st.write(':red[**Instabilidade no Fornecimento**]: Eventos geopolíticos, como conflitos armados, revoluções políticas ou tensões regionais, podem resultar em interrupções no fornecimento de petróleo. Se um país importante interrompe ou reduz sua produção de petróleo devido a instabilidades, isso pode afetar diretamente a oferta global.')
-
-st.write(':red[**Tensões no Estreito de Ormuz**]: O Estreito de Ormuz, localizado entre o Irã e Omã, é uma passagem estratégica para o transporte de petróleo. Tensões geopolíticas na região podem levar a restrições no tráfego de petroleiros, afetando o suprimento global.')
-
-st.write(':red[**Sanções Econômicas**]: A imposição de sanções econômicas a países produtores de petróleo pode restringir suas capacidades de produção e exportação. Isso pode levar a uma redução na oferta global, impactando os preços.')
-
-st.write(':red[**Relações entre Países Exportadores**]: Disputas diplomáticas entre países exportadores de petróleo podem influenciar as decisões de produção e exportação. Acordos bilaterais ou desentendimentos podem ter efeitos diretos na oferta global.')
-
-st.write(':red[**Mercado de Futuros e Especulação**]: Os traders nos mercados financeiros frequentemente reagem a eventos geopolíticos, antecipando possíveis impactos na oferta e demanda de petróleo. Isso pode levar a movimentos significativos nos preços dos contratos futuros de petróleo.')
-
-st.write(':red[**Risco de Investimento**]: Investidores em petróleo e commodities consideram os riscos geopolíticos ao tomar decisões de investimento. A incerteza associada a eventos geopolíticos pode aumentar a volatilidade nos mercados.')
-
-st.divider()
-
 st.subheader('Previsão')
 
 df.rename(columns={'data': 'ds', 'preco': 'y'}, inplace=True)
 
 data_atual = df['ds'].max()
-data_futuro = data_atual + datetime.timedelta(days=365)
+data_futuro = data_atual + datetime.timedelta(days=180)
 futuro = pd.date_range(start=data_atual, end=data_futuro, freq='D')
 futuro = pd.DataFrame({'ds': futuro})
 df_prophet = pd.concat([df, futuro], ignore_index=True)
@@ -256,10 +238,10 @@ test_data = df_prophet[df_prophet['ds'] >= '2022-01-01']
 model = Prophet()
 model.fit(train_data)
 
-future = model.make_future_dataframe(periods=365)
+future = model.make_future_dataframe(periods=180)
 forecast = model.predict(future)
 
-fig = px.line(forecast, x='ds', y=['yhat', 'yhat_lower', 'yhat_upper'], title='Previsão do Preço do Petróleo (Brent) para os Próximos 365 Dias')
+fig = px.line(forecast, x='ds', y=['yhat', 'yhat_lower', 'yhat_upper'], title='Previsão do Preço do Petróleo (Brent) para os Próximos 6 meses')
 fig.add_scatter(x=df_prophet['ds'], y=df_prophet['y'], mode='lines', name='Observado')
 fig.update_xaxes(title_text='Data')
 fig.update_yaxes(title_text='Preço do Petróleo')
@@ -273,7 +255,7 @@ st.write(f'Acurácia do teste de 2022: {accuracy_percentage:.2f}%')
 
 st.divider()
 
-st.subheader('Próximos 365 dias')
+st.subheader('Próximos 6 mees')
 
 modelo_prophet = Prophet(interval_width=0.75) 
 modelo_prophet.fit(df_prophet)
