@@ -36,7 +36,7 @@ st.divider()
 
 st.subheader("Série histórica - Preço petróleo")  
 df_mean_by_year = df.groupby(df['data'].dt.year).mean(numeric_only=False)
-fig_mean_by_year = px.line(df_mean_by_year, x=df_mean_by_year.index, y=df_mean_by_year.columns[1:],
+fig_mean_by_year = px.line(df_mean_by_year, x=df_mean_by_year.index, y=df_mean_by_year.columns[1:],color = "red"
                                     labels={'value': 'Média do Preço do Petróleo (USD)', 
                                     'index': 'Ano'})
 
@@ -49,10 +49,8 @@ col1,col3 = st.columns(2)
 with col1:
 
     st.markdown(":red[2008]")
-    st.write('No ano de 2008, o preço do petróleo atingiu seu maior patamar, marcando uma significativa alta que nunca havia sido alcançada até então.')
-    st.write('Este aumento expressivo pode ser contextualizado no cenário global da economia, onde eventos econômicos complexos e dinâmicas geopolíticas desempenharam papéis cruciais.')
-    st.write('Além disso, este ano também marcou a crise econômica mundial mais séria desde a Segunda Guerra Mundial')
-    st.write('Por causa da crise financeira e da recessão que freou a demanda por petróleo, o barril desabou até os US$ 33,36 em 24 de dezembro.')
+    st.write('Em 2008, o valor do petróleo atingiu seu ponto mais alto, registrando um aumento significativo que nunca havia sido alcançado anteriormente. Esse aumento notável pode ser atribuído ao contexto econômico global, onde eventos econômicos complexos e questões geopolíticas desempenharam papéis fundamentais.')
+    st.write('Além disso, este ano marcou também a crise econômica global mais severa desde a Segunda Guerra Mundial. Devido à crise financeira e à recessão que diminuíram a demanda por petróleo, o preço do barril despencou para US$ 33,36 em 24 de dezembro.')
     st.write(' ')
     subcol1, subcol2 = st.columns(2)
     
@@ -60,8 +58,7 @@ with col1:
 with col3:
     st.markdown(":red[2022]")
     st.write('A disseminação do COVID-19 provocou quedas sucessivas no preço do petróleo. Na base de qualquer atividade produtiva, o setor de energia é sensível aos efeitos da pandemia na economia.')
-    st.write('Apesar dos ganhos, preços ficaram longe dos mais de US$ 120 por barril registrados durante o pico da crise da guerra da Ucrânia')
-    st.write('As reservas globais de petróleo subiram ao seu maior nível histórico em 2022, a 1.564,44 bilhões de barris, informou a Organização dos Países Exportadores de Petróleo (Opep), em seu Boletim Estatístico Anual de 2023.')
+    st.write('Os preços do petróleo e de seus derivados tiveram grande apreciação na primeira metade do ano de 2022, principalmente em função do conflito em andamento entre Rússia e Ucrânia, mas também devido ao crescimento da demanda global acima dos valores que eram projetados. No mercado doméstico, os preços de combustíveis tiveram altas significativas. O óleo diesel de baixo teor de enxofre (S-10) teve o maior aumento, de 42%, enquanto a gasolina teve alta de 8%, e o gás liquefeito de petróleo (GLP) subiu 10%, em valores médios.')
     st.caption(' \n')
     st.caption(' \n')
     st.write(' ')
