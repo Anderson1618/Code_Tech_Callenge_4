@@ -29,8 +29,6 @@ with col1:
 
 with col2:
 
-st.title('Exemplo de Adição de Vídeo no Streamlit')
-st.write("Aqui está um exemplo de como adicionar um vídeo ao seu aplicativo Streamlit.")
 st.subheader("Vídeo do YouTube")
 st.video(https://www.youtube.com/watch?v=IK6PAP7Sj7s)
 
