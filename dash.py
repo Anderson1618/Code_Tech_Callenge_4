@@ -1,8 +1,6 @@
 import streamlit as st
 import pandas as pd
 import datetime
-import prophet
-from prophet import Prophet
 
 st.set_page_config(layout='wide')
 st.title('O Preço do Petróleo 🛢️📈 ')
