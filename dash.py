@@ -34,27 +34,15 @@ with col2:
 
 st.divider()
 
-# Definindo a cor da linha
-cor_linha = 'red'  # Altere para a cor desejada
-
-# Criando o gráfico de linha com o Plotly Express
+st.subheader("Média Anual do Preço do Petróleo")  
+df_mean_by_year = df.groupby(df['data'].dt.year).mean(numeric_only=False)
 fig_mean_by_year = px.line(df_mean_by_year, x=df_mean_by_year.index, y=df_mean_by_year.columns[1:],
-                           labels={'value': 'Média do Preço do Petróleo (USD)', 'index': 'Ano'})
-
-# Adicionando linhas verticais nos anos de 2008 e 2022
-fig_mean_by_year.add_shape(
-    dict(type="line", x0=2008, y0=0, x1=2008, y1=120, line=dict(color="black", width=1))
-)
-fig_mean_by_year.add_shape(
-    dict(type="line", x0=2022, y0=0, x1=2022, y1=120, line=dict(color="black", width=1))
-)
-
-# Atualizando a cor da linha
-fig_mean_by_year.update_traces(line_color=cor_linha)
-
-# Exibindo o gráfico com Streamlit
-st.subheader("Série Histórica - Preço do Petróleo")
+                                    labels={'value': 'Média do Preço do Petróleo (USD)', 
+                                    'index': 'Ano'})
 st.plotly_chart(fig_mean_by_year, use_container_width=True)
+st.caption('A linha representa a média anual do preço do barril de petróleo ao longo do tempo. Variações notáveis podem ser resultado de eventos geopolíticos, flutuações na oferta e demanda, ou fatores econômicos globais.')
+
+col1, col2, col3 = st.columns(3)
 
 
 col1, col2, col3 = st.columns(3)
