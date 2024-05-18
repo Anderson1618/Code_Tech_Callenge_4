@@ -40,17 +40,17 @@ fig_mean_by_year = px.line(df_mean_by_year, x=df_mean_by_year.index, y=df_mean_b
                                     labels={'value': 'Média do Preço do Petróleo (USD)', 
                                     'index': 'Ano'})
 fig_mean_by_year.add_shape(
-    dict(type="line", x="2008-01-01", y=0, x1="2008-01-01", y1=120, line=dict(color="black", width=1))
+    dict(type="line", x0="2008-01-01", y=0, x1="2008-01-01", y1=120, line=dict(color="black", width=1))
 )
 fig_mean_by_year.add_shape(
-    dict(type="line", x="2022-01-01", y=0, x1="2022-01-01", y1=120, line=dict(color="black", width=1))
+    dict(type="line", x0="2022-01-01", y=0, x1="2022-01-01", y1=120, line=dict(color="black", width=1))
 )
 st.plotly_chart(fig_mean_by_year, use_container_width=True)
 
-col1, col2, col3 = st.columns(3)
+col1, col3 = st.columns(2)
 
 
-col1, col2, col3 = st.columns(3)
+col1,col3 = st.columns(2)
 with col1:
 
     st.markdown(":red[2008]")
@@ -72,26 +72,6 @@ with col1:
         st.caption(f"Data: {min_price_2008['data'].strftime('%d/%m/%Y')}")
         st.caption(f"Preço Mínimo: {min_price_2008['preco']}")
     
-with col2:
-    st.markdown(":red[2016]")
-    st.write('A demanda por petróleo caiu por causa do ritmo mais lento de crescimento das economias dos países grandes consumidores, como Estados Unidos, China, Japão e os países ricos da Europa.')
-    st.write('Os Estados Unidos, o segundo maior importador global, conseguiram reduzir sua dependência do Oriente Médio e aumentar seus estoques de petróleo por meio de uma abordagem diversificada. ')
-    st.write('Aumentando sua produção de petróleo de 10 para 14 milhões de barris por dia, tornaram-se o maior produtor mundial, ultrapassando a Rússia e a Arábia Saudita.')
-    st.caption(' \n')
-    st.write(' ')
-    st.write(' ')
-    subcol1, subcol2 = st.columns(2)
-    with subcol1:
-        df_2016 = df[df['data'].dt.year == 2016]
-        max_price_2016 = df_2016.loc[df_2016['preco'].idxmax()]
-        st.write("Valor Máximo em 2016")
-        st.caption(f"Data: {max_price_2016['data'].strftime('%d/%m/%Y')}") 
-        st.caption(f"Preço Máximo: {max_price_2016['preco']}")
-    with subcol2:
-        min_price_2016 = df_2016.loc[df_2016['preco'].idxmin()]
-        st.write("Valor Mínimo em 2016")
-        st.caption(f"Data: {min_price_2016['data'].strftime('%d/%m/%Y')}")
-        st.caption(f"Preço Mínimo: {min_price_2016['preco']}")
 
 with col3:
     st.markdown(":red[2022]")
