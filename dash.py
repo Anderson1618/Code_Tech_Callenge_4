@@ -70,16 +70,23 @@ with col3:
 
 st.divider()
 
-st.subheader("O Preço do Petróleo anual de 1987 até 2024")  
-st.write('O gráfico interativo permite uma análise detalhada da variação diária do preço do petróleo ao longo dos anos. Utilizando o widget de seleção de ano, você pode escolher um ano específico para examinar sua série temporal correspondente. Isso é valioso para entender como o preço do petróleo flutuou em um determinado período, destacando potenciais padrões, tendências sazonais ou eventos específicos que afetaram os preços.')
-st.write('Ao selecionar um ano de interesse, você pode visualizar como o mercado reagiu a eventos geopolíticos, mudanças na oferta e demanda, ou outros fatores econômicos. Por exemplo, durante anos de crises financeiras ou conflitos globais, é possível observar picos ou quedas acentuadas nos preços do petróleo. Essa análise granular proporciona insights valiosos para investidores, economistas e profissionais do setor, ajudando-os a tomar decisões informadas com base nos padrões históricos de preços do petróleo.')
+st.subheader("Análise temporal do preço - 1987 até 2024")  
+st.write('O gráfico interativo permite uma análise detalhada da variação diária ao longo dos anos. é interessante para entendermos como o preço do petróleo flutuou em um determinado período extratificando insights reçevantes para tomadas de decisão.')
+st.write('Ao selecionar um ano de interesse, podem visualizar como o mercado reagiu a eventos geopolíticos, mudanças na oferta e demanda, ou outros fatores econômicos.')
 
-selected_year = st.selectbox("Selecione um ano:", df['data'].dt.year.unique())
+selected_year = st.selectbox("Ano:", df['data'].dt.year.unique())
 df_selected_year = df[df['data'].dt.year == selected_year]
+dia_maior_alta = df_selected_year.loc[df_selected_year['preco'].idxmax()]['data']
+dia_maior_baixa = df_selected_year.loc[df_selected_year['preco'].idxmin()]['data']
+
 fig = px.line(df_selected_year, x='data', y='preco', title=f"Preço do Petróleo em {selected_year}",
               labels={'Preco': 'Preço do Petróleo (USD)', 'data': 'data'})
 fig.update_xaxes(title_text='Data')
 fig.update_yaxes(title_text='Preço do Petróleo (USD)')
+
+fig.add_vline(x=dia_maior_alta, line_dash="dash", line_color="green", annotation_text="Maior Alta", annotation_position="top left")
+fig.add_vline(x=dia_maior_baixa, line_dash="dash", line_color="red", annotation_text="Maior Baixa", annotation_position="bottom right")
+
 st.plotly_chart(fig, use_container_width=True)
 
 st.divider()
