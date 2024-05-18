@@ -138,7 +138,7 @@ with col2:
     st.write(' ')
     st.write(' ')
     st.write(' ')
-    st.write(Em 11 setembro de 2001 em pleno ataque terrorista aos Estados Unidos o barril Brent era cotado a 29.12 dólares, diminuindo a 25.57 dólares uma semana depois. No final do mês de setembro registra uma queda de cerca de 25%.')
+    st.write('Em 11 setembro de 2001 em pleno ataque terrorista aos Estados Unidos o barril Brent era cotado a 29.12 dólares, diminuindo a 25.57 dólares uma semana depois. No final do mês de setembro registra uma queda de cerca de 25%.')
 
 col1, col2 = st.columns([2, 1])
 with col1: 
