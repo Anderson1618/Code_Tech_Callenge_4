@@ -210,7 +210,7 @@ dados_paises = {
 df_producao_paises = pd.DataFrame(dados_paises)
 selected_countries = st.multiselect("Selecione os países", df_producao_paises['País'].unique(), default=df_producao_paises['País'].unique())
 df_selected_countries = df_producao_paises[df_producao_paises['País'].isin(selected_countries)]
-color_scheme = ['#1f77b4'] * len(selected_countries)
+color_scheme = ['#ec5353'] * len(selected_countries)
 fig_countries = px.bar(df_selected_countries, x="País", y="Produção de Petróleo (barris por dia)",
                        color="% do Total", title="Top 10 maiores exportadores de petróleo do mundo",
                        labels={"Produção de Petróleo(barris por dia)": "Produção de Petróleo (barris por dia)", "% do Total": "Percentual do Total"})
