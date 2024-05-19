@@ -287,6 +287,21 @@ comparison_data = pd.merge(test_data[['ds', 'y']], forecast[['ds', 'yhat']], on=
 accuracy_percentage = (1 - (comparison_data['y'] - comparison_data['yhat']).abs().sum() / comparison_data['y'].sum()) * 100
 st.write(f'Acurácia do teste de 2022: {accuracy_percentage:.2f}%')
 
+# Modelo ARIMA
+st.subheader('Modelo ARIMA')
+model_arima = ARIMA(train_data['preco'], order=(5,1,0))
+model_arima_fit = model_arima.fit()
+forecast_arima = model_arima_fit.forecast(steps=len(test_data))
+accuracy_arima = calculate_accuracy(test_data['preco'].values, forecast_arima)
+st.write(f'Acurácia do modelo ARIMA: {accuracy_arima:.2f}%')
+
+# Modelo de média móvel
+st.subheader('Modelo de Média Móvel')
+window_size = 30  # Tamanho da janela para a média móvel
+rolling_mean = df['preco'].rolling(window=window_size).mean().iloc[-len(test_data):]
+accuracy_rolling_mean = calculate_accuracy(test_data['preco'].values, rolling_mean)
+st.write(f'Acurácia do modelo de Média Móvel: {accuracy_rolling_mean:.2f}%')
+
 st.divider()
 
 st.subheader('Próximos 6 mees')
