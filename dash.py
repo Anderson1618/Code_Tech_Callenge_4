@@ -276,7 +276,7 @@ future = model.make_future_dataframe(periods=180)
 forecast = model.predict(future)
 
 fig = px.line(forecast, x='ds', y=['yhat', 'yhat_lower', 'yhat_upper'], title='Previsão do Preço do Petróleo (Brent) para os Próximos 6 meses', 
-              color_discrete_map={'yhat': 'green', 'yhat_lower': 'lilac', 'yhat_upper': 'blue'})
+              color_discrete_map={'yhat': 'green', 'yhat_lower': 'purple', 'yhat_upper': 'blue'})
 fig.add_scatter(x=df_prophet['ds'], y=df_prophet['y'], mode='lines', name='Observado', line=dict(color='grey'))
 fig.update_xaxes(title_text='Data')
 fig.update_yaxes(title_text='Preço do Petróleo')
