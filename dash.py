@@ -143,7 +143,7 @@ with col2:
 col1, col2 = st.columns([2, 1])
 with col1: 
     df_asia = df[(df['data'] >= '2008-01-01') & (df['data'] <= '2008-12-31')]
-    fig_asia = px.line(df_asia, x='data', y='preco', title='Variação do Preço do Petróleo no conflito Rússia-Ucrânia 📉',
+    fig_asia = px.line(df_asia, x='data', y='preco', title='Crescimento da Demanda da China e Índia',
                             labels={'preco': 'Preço do Petróleo (USD)', 'data': 'Data'})
     fig_asia.add_trace(go.Scatter(x=df_asia['data'], y=df_asia['preco'], showlegend=False))
     st.plotly_chart(fig_asia, use_container_width=True)
@@ -160,11 +160,11 @@ with col2:
 st.header('Anos 2010')
 col1, col2 = st.columns([2, 1])
 with col1: 
-    df_russia_ucrania = df[(df['data'] >= '2022-02-24') & (df['data'] <= '2022-03-03')]
-    fig_russia_ucrania = px.line(df_russia_ucrania, x='data', y='preco', title='Variação do Preço do Petróleo no conflito Rússia-Ucrânia 📉',
+    df_eua = df[(df['data'] >= '2014-01-01') & (df['data'] <= '2016-12-31')]
+    fig_eua = px.line(df_eua, x='data', y='preco', title='Queda dos Preços do Petróleo (2014-2016)',
                             labels={'preco': 'Preço do Petróleo (USD)', 'data': 'Data'})
-    fig_russia_ucrania.add_trace(go.Scatter(x=df_russia_ucrania['data'], y=df_russia_ucrania['preco'], showlegend=False))
-    st.plotly_chart(fig_russia_ucrania, use_container_width=True)
+    fig_eua.add_trace(go.Scatter(x=df_eua['data'], y=df_eua['preco'], showlegend=False))
+    st.plotly_chart(fig_eua, use_container_width=True)
 
 with col2:
     st.write(' ')
@@ -173,14 +173,14 @@ with col2:
     st.write(' ')
     st.write(' ')
     st.write(' ')
-    st.write('No conflito com a Ucrânia, o crescimento do dia 24 de fevereiro a 3 de março de 2022 foi de 19,21%, com barris cotados em US$ 118,11.')
-    st.write('Após cerca de 3 meses, os preços caíram. Isso porque, segundo Bassotto, as cadeias produtivas se realocam, e, quem antes comprava da Rússia, migrou para outro mercado ou conseguiu comprar mais barato do país, como Índia e China fizeram.')
+    st.write('Excesso de oferta devido à produção de xisto nos EUA e desaceleração da economia global.')
+    st.write('Resultado: Preços do petróleo caíram de cerca de 100 dólares para menos de 30 dólares por barril.')
 
 st.header('Anos 2020')
 col1, col2 = st.columns([2, 1])
 with col1: 
     df_russia_ucrania = df[(df['data'] >= '2022-02-24') & (df['data'] <= '2022-03-03')]
-    fig_russia_ucrania = px.line(df_russia_ucrania, x='data', y='preco', title='Variação do Preço do Petróleo no conflito Rússia-Ucrânia 📉',
+    fig_russia_ucrania = px.line(df_russia_ucrania, x='data', y='preco', title='Variação do Preço do Petróleo no conflito Rússia-Ucrânia',
                             labels={'preco': 'Preço do Petróleo (USD)', 'data': 'Data'})
     fig_russia_ucrania.add_trace(go.Scatter(x=df_russia_ucrania['data'], y=df_russia_ucrania['preco'], showlegend=False))
     st.plotly_chart(fig_russia_ucrania, use_container_width=True)
@@ -192,7 +192,7 @@ with col2:
     st.write(' ')
     st.write(' ')
     st.write(' ')
-    st.write('No conflito entre Russia e Ucrânia, houve crescimento do dia 24 de fevereiro a 3 de março de 2022 foi de 19.21%, com barris cotados em 118.11 dólares. Após cerca de 3 meses, os preços caíram.')
+    st.write('No conflito entre Rússia e Ucrânia, houve crescimento do dia 24 de fevereiro a 3 de março de 2022 foi de 19.21%, com barris cotados em 118.11 dólares. Após cerca de 3 meses, os preços caíram.')
 
 
 st.divider()
@@ -210,6 +210,7 @@ dados_paises = {
 df_producao_paises = pd.DataFrame(dados_paises)
 selected_countries = st.multiselect("Selecione os países", df_producao_paises['País'].unique(), default=df_producao_paises['País'].unique())
 df_selected_countries = df_producao_paises[df_producao_paises['País'].isin(selected_countries)]
+color_scheme = ['#1f77b4'] * len(selected_countries)
 fig_countries = px.bar(df_selected_countries, x="País", y="Produção de Petróleo (barris por dia)",
                        color="% do Total", title="Top 10 maiores exportadores de petróleo do mundo",
                        labels={"Produção de Petróleo(barris por dia)": "Produção de Petróleo (barris por dia)", "% do Total": "Percentual do Total"})
@@ -236,21 +237,22 @@ conteudo_russia = """
 A Rússia é o maior país do mundo em área terrestre e também é um importante produtor de petróleo.
 """
 
+conteudo_canada = """
+**4. Canadá:**
+O país solidificou a sua posição como um importante exportador de petróleo. As areias betuminosas e as reservas convencionais do Canadá contribuem principalmente para o mercado global de petróleo.
+"""
+
 conteudo_iraque = """
-**4. Iraque:**
+**5. Iraque:**
 Localizado no centro do Médio Oriente, é um exportador de petróleo resiliente. Apesar de problemas como a instabilidade política e a guerra regional, o Iraque continua a ser um dos 10 principais países exportadores de petróleo.
 """
 
-conteudo_canada = """
-**5. Canadá:**
-O país solidificou a sua posição como um importante exportador de petróleo. As areias betuminosas e as reservas convencionais do Canadá contribuem principalmente para o mercado global de petróleo.
-"""
 
 st.markdown(conteudo_eua, unsafe_allow_html=True)
 st.markdown(conteudo_arabia_saudita, unsafe_allow_html=True)
 st.markdown(conteudo_russia, unsafe_allow_html=True)
-st.markdown(conteudo_iraque, unsafe_allow_html=True)
 st.markdown(conteudo_canada, unsafe_allow_html=True)
+st.markdown(conteudo_iraque, unsafe_allow_html=True)
 
 st.divider()
 
