@@ -197,7 +197,7 @@ with col2:
 
 st.divider()
 
-st.subheader("Top 10 maiores exportadores de petróleo do mundo")  
+st.subheader("Maiores exportadores de petróleo do mundo")  
 
 st.caption("Produção de petróleo diária.")
 dados_paises = {
@@ -212,7 +212,7 @@ selected_countries = st.multiselect("Selecione os países", df_producao_paises['
 df_selected_countries = df_producao_paises[df_producao_paises['País'].isin(selected_countries)]
 color_scheme = ['#ec5353'] * len(selected_countries)
 fig_countries = px.bar(df_selected_countries, x="País", y="Produção de Petróleo (barris por dia)",
-                       color="% do Total", title="Top 10 maiores exportadores de petróleo do mundo",
+                       color="% do Total", title="Maiores exportadores de petróleo do mundo",
                        labels={"Produção de Petróleo(barris por dia)": "Produção de Petróleo (barris por dia)", "% do Total": "Percentual do Total"})
 st.plotly_chart(fig_countries, use_container_width=True)
 
@@ -220,7 +220,7 @@ st.plotly_chart(fig_countries, use_container_width=True)
 st.divider()
 st.subheader("Análise - Top 5 maiores exportadores")
 
-st.write('Em 2022–23, o cenário global de exportação de petróleo sofreu uma mudança subtil. De acordo com os dados dos países exportadores de petróleo de 2023, as exportações aumentaram 0,8% em relação ao ano anterior, atrás da superfície agitou-se um mar de dinâmicas em mudança. Embora tenha registado uma expansão de 2,3%, a procura ficou aquém das expectativas originais, destacando factores adversos como o aumento da eficiência energética e a crescente adopção de veículos eléctricos. ')
+st.write('De acordo com os dados dos países exportadores de petróleo de 2023, as exportações aumentaram 0,8% em relação ao ano anterior, atrás da superfície agitou-se um mar de dinâmicas em mudança. Embora tenha registado uma expansão de 2,3%, a procura ficou aquém das expectativas originais, destacando factores adversos como o aumento da eficiência energética e a crescente adopção de veículos eléctricos. ')
 
 conteudo_eua = """
 **1. Estados Unidos:**
@@ -285,18 +285,18 @@ st.plotly_chart(fig, use_container_width=True)
 
 comparison_data = pd.merge(test_data[['ds', 'y']], forecast[['ds', 'yhat']], on='ds', how='inner')
 accuracy_percentage = (1 - (comparison_data['y'] - comparison_data['yhat']).abs().sum() / comparison_data['y'].sum()) * 100
-st.write(f'Acurácia do teste de 2022: {accuracy_percentage:.2f}%')
+st.write(f'Acurácia: {accuracy_percentage:.2f}%')
 
 st.divider()
 
-st.subheader('Próximos 6 mees')
+st.subheader('Próximos 6 meses')
 
 modelo_prophet = Prophet(interval_width=0.75) 
 modelo_prophet.fit(df_prophet)
 previsao = modelo_prophet.predict(futuro)
 
 fig = go.Figure()
-fig.add_trace(go.Scatter(x=previsao['ds'], y=previsao['yhat'], mode='lines', name='Preço Previsto'))
+fig.add_trace(go.Scatter(x=previsao['ds'], y=previsao['yhat'], mode='lines', name='Preço Previsto', line=dict(color='green')))
 
 fig.add_trace(go.Scatter(x=previsao['ds'], y=previsao['yhat_lower'], fill='tonexty', mode='lines', line=dict(width=0), name='Intervalo de Confiança'))
 fig.add_trace(go.Scatter(x=previsao['ds'], y=previsao['yhat_upper'], fill='tonexty', fillcolor='rgba(0,100,80,0.2)', mode='lines', line=dict(width=0), name=''))
