@@ -192,63 +192,58 @@ with col2:
     st.write(' ')
     st.write(' ')
     st.write(' ')
-    st.write('Com guerra envolvendo a Rússia foi um pouco diferente, quando a cotação do barril Brent, referência internacional, subiu rapidamente.')
-    st.write('No conflito com a Ucrânia, o crescimento do dia 24 de fevereiro a 3 de março de 2022 foi de 19.21%, com barris cotados em US$ 118,11.')
-    st.write('Após cerca de 3 meses, os preços caíram. Isso porque, segundo Bassotto, as cadeias produtivas se realocam, e, quem antes comprava da Rússia, migrou para outro mercado ou conseguiu comprar mais barato do país, como Índia e China fizeram.')
+    st.write('No conflito entre Russia e Ucrânia, houve crescimento do dia 24 de fevereiro a 3 de março de 2022 foi de 19.21%, com barris cotados em 118.11 dólares. Após cerca de 3 meses, os preços caíram.')
 
 
 st.divider()
 
-st.subheader("10 países mais exportadores de petróleo do mundo")  
+st.subheader("Top 10 maiores exportadores de petróleo do mundo")  
 
-st.caption("O próximo gráfico mostra a produção de petróleo diária de alguns dos maiores produtores em 2021. "
-           "Você pode selecionar os países na caixa de seleção e visualizar a contribuição de cada país para a produção total.")
+st.caption("Produção de petróleo diária.")
 dados_paises = {
-    "País": ["EUA 🇺🇸", "Arábia Saudita 🇸🇦", "Federação Russa 🇷🇺", "Canadá 🇨🇦", "Iraque 🇮🇶", 
-             "China 🇨🇳", "Emirados Árabes Unidos 🇦🇪", "Irã 🇮🇷", "Brasil 🇧🇷"],
-    "Produção de Petróleo em 2021 (barris por dia)": [16.6e6, 11e6, 10.9e6, 5.4e6, 4.1e6, 4e6, 3.7e6, 3.6e6, 3e6],
+    "País": ["EUA", "Arábia Saudita", "Rússia", "Canadá", "Iraque", 
+             "China", "Emirados Árabes Unidos", "Irã", "Brasil"],
+    "Produção de Petróleo (barris por dia)": [16.6e6, 11e6, 10.9e6, 5.4e6, 4.1e6, 4e6, 3.7e6, 3.6e6, 3e6],
     "% do Total": [18.5, 12.2, 12.2, 6.0, 4.6, 4.4, 4.1, 4.0, 3.3]
 }
 
 df_producao_paises = pd.DataFrame(dados_paises)
 selected_countries = st.multiselect("Selecione os países", df_producao_paises['País'].unique(), default=df_producao_paises['País'].unique())
 df_selected_countries = df_producao_paises[df_producao_paises['País'].isin(selected_countries)]
-fig_countries = px.bar(df_selected_countries, x="País", y="Produção de Petróleo em 2021 (barris por dia)",
-                       color="% do Total", title="Os 10 maiores produtores de Petróleo em 2021",
-                       labels={"Produção de Petróleo em 2021 (barris por dia)": "Produção de Petróleo (barris por dia)", "% do Total": "Percentual do Total"})
+fig_countries = px.bar(df_selected_countries, x="País", y="Produção de Petróleo (barris por dia)",
+                       color="% do Total", title="Top 10 maiores exportadores de petróleo do mundo",
+                       labels={"Produção de Petróleo(barris por dia)": "Produção de Petróleo (barris por dia)", "% do Total": "Percentual do Total"})
 st.plotly_chart(fig_countries, use_container_width=True)
 
 
 st.divider()
-st.subheader("Breve análise dos top 5 países e as principais mudanças de 2021 em relação a 2022-2023")
+st.subheader("Análise - Top 5 maiores exportadores")
 
 st.write('Em 2022–23, o cenário global de exportação de petróleo sofreu uma mudança subtil. De acordo com os dados dos países exportadores de petróleo de 2023, as exportações aumentaram 0,8% em relação ao ano anterior, atrás da superfície agitou-se um mar de dinâmicas em mudança. Embora tenha registado uma expansão de 2,3%, a procura ficou aquém das expectativas originais, destacando factores adversos como o aumento da eficiência energética e a crescente adopção de veículos eléctricos. ')
 
-st.write('Vejamos os 5 países que mais exportam de 2001 até hoje:')
-
 conteudo_eua = """
 **1. Estados Unidos:**
-Com uma estimativa aproximada de 11.567.000 barris por dia, os Estados Unidos continuam a ser o principal produtor mundial de petróleo, como têm sido durante muitos anos.
+Com uma estimativa aproximada de 11.567.000 barris por dia, os Estados Unidos é o principal produtor mundial de petróleo, como têm sido durante muitos anos.
 """
 
 conteudo_arabia_saudita = """
 **2. Arábia Saudita:**
-A Arábia Saudita continua a ser o líder incontestado entre os gigantes exportadores de petróleo. Com enormes reservas de petróleo e tecnologias de extracção de ponta, a monarquia tem contribuído regularmente com a maior parte do mercado petrolífero global.
+A Arábia Saudita continua a ser o líder incontestado entre os gigantes exportadores de petróleo. Com enormes reservas de petróleo e tecnologias de extracção de ponta.
 """
 
 conteudo_russia = """
 **3. Rússia:**
-Com base nos dados de 2023 dos países exportadores de petróleo, a Rússia é o maior país do mundo em área terrestre e também é um importante produtor de petróleo.
+A Rússia é o maior país do mundo em área terrestre e também é um importante produtor de petróleo.
 """
 
 conteudo_iraque = """
 **4. Iraque:**
-O Iraque, localizado no centro do Médio Oriente, é um exportador de petróleo resiliente. Apesar de problemas como a instabilidade política e a guerra regional, o Iraque continua a ser um dos 10 principais países exportadores de petróleo.
+Localizado no centro do Médio Oriente, é um exportador de petróleo resiliente. Apesar de problemas como a instabilidade política e a guerra regional, o Iraque continua a ser um dos 10 principais países exportadores de petróleo.
 """
 
 conteudo_canada = """
 **5. Canadá:**
-Com as extensas paisagens do Canadá, o país solidificou a sua posição como um importante exportador de petróleo. As areias betuminosas e as reservas convencionais do Canadá contribuem principalmente para o mercado global de petróleo.
+O país solidificou a sua posição como um importante exportador de petróleo. As areias betuminosas e as reservas convencionais do Canadá contribuem principalmente para o mercado global de petróleo.
 """
 
 st.markdown(conteudo_eua, unsafe_allow_html=True)
